@@ -17,9 +17,13 @@ body{
   box-shadow: 2px 2px 2px 2px #000000
 }
 
-.card-link{
+.card-link, .comments{
   text-decoration: none;
   color: #ffffff
+}
+
+.comments{
+  float: right;
 }
 
 #scraper-btn{
