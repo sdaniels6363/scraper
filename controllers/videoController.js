@@ -1,9 +1,11 @@
 var express = require("express");
+var axios = require("axios");
+var cheerio = require("cheerio");
 
 var router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
-var goal = require("../models/videoModel.js");
+var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
@@ -27,12 +29,11 @@ router.get("/scrape", function(req, res) {
 
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).children("p").children("a").text();
-      result.link = $(this)
-        .children("a")
-        .attr("href");
+      result.link = $(this).children("p").children("a").attr("href");
+      result.
 
       // Create a new Article using the `result` object built from scraping
-      db.Article.create(result)
+      db.Video.create(result)
         .then(function(dbArticle) {
           // View the added result in the console
           console.log(dbArticle);
