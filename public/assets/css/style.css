@@ -1,0 +1,23 @@
+body{
+  background-image: url("../img/lfc-tile-md-40.png");
+  background-repeat: repeat;
+}
+
+#navbar{
+  background-color: #850000;
+  border-bottom: 5px solid #000000;
+  font-size: 24px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.card{
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px 2px #000000
+}
+
+.card-link{
+  text-decoration: none;
+  color: #ffffff
+}
