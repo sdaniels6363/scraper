@@ -17,11 +17,6 @@ var VideoSchema = new Schema({
     trim: true,
     required: true
   },
-  description:{
-    type: String,
-    trim: true,
-    required: true
-   },
    comment: {
     type: Schema.Types.ObjectId,
     ref: "Comment"
