@@ -21,3 +21,19 @@ body{
   text-decoration: none;
   color: #ffffff
 }
+
+#scraper-btn{
+  margin: 20px 0px;
+  font-size: 20px;
+  padding: 5px 100px;
+  border-radius: 10px;
+  border: 2px solid #000000;
+  background-color: #bd2626;
+  color: #ffffff;
+}
+
+#scraper-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
