@@ -5,8 +5,13 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-var GoalSchema = new Schema({
+var VideoSchema = new Schema({
 
+  title:{
+    type: String,
+    trim: true,
+    required: true
+  },
   link:{
     type: String,
     trim: true,
@@ -17,16 +22,15 @@ var GoalSchema = new Schema({
     trim: true,
     required: true
    },
-   thumbnail:{
-     type: String,
-     trim: true,
-     require: false
-   }
+   comment: {
+    type: Schema.Types.ObjectId,
+    ref: "Comment"
+  }
 
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Goal = mongoose.model("Goal", GoalSchema);
+var Video = mongoose.model("Video", VideoSchema);
 
-// Export the User model
-module.exports = Goal;
+// Export the Video model
+module.exports = Video;
