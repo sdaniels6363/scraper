@@ -2,11 +2,12 @@ var express = require("express");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var exphbs = require("express-handlebars");
+var cheerio = require("cheerio");
 
 var PORT = 3000;
 
-// Requiring the `User` model for accessing the `users` collection
-var Page = require("./models/goalModel.js");
+// import dbs
+var db = require("./models")
 
 // Initialize Express
 var app = express();
