@@ -27,7 +27,7 @@ mongoose.connect(MONGODB_URI);
 
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/goalController.js");
+var routes = require("./controllers/videoController.js");
 
 app.use(routes);
 
@@ -36,5 +36,3 @@ app.listen(PORT, function() {
   // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
 });
-
-// axios.get("https://www.reddit.com/r/LiverpoolFC/")
