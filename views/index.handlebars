@@ -1,11 +1,19 @@
 <nav id="navbar">
   <h3>LiverpoolFC Goals</h3>
-  <h6>A web scraper to collect goals posted to reddit.com/r/LiverpoolFC</h6>
+  <h6>A web scraper to video content posted to reddit.com/r/LiverpoolFC</h6>
 
 </nav>
 
 <div class="container">
   <div class="col-md-12">
+
+    <div id="scraper-box">
+      <button class="btn" id="scraper-btn">
+        Check for video content!
+      </button>
+    </div>
+
+
     <div class="card">
       <div class="card-body bg-secondary text-white ">
         <h4 class="card-title">Card title</h4>
@@ -13,12 +21,12 @@
         <a href="#" class="card-link">Card link</a>
       </div>
     </div>
-    
+
     {{#each goal}}
     <div class="card">
       <div class="card-body bg-secondary text-white ">
         <h4 class="card-title">{{this.title}}</h4>
-        <p class="card-text">{{this.text}}</p>
+        <p class="card-text">{{this.description}}</p>
         <a href="#" class="card-link">{{this.link}}</a>
       </div>
     </div>
