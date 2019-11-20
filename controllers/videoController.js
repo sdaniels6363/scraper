@@ -8,15 +8,15 @@ var router = express.Router();
 var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function(req, res) {
-  // goal.all(function(data) {
-    res.render("index");
-  // });
+router.get("/", (req, res) => {
+  db.Video.find({}).then((data) => {
+    res.render("index", {video: data});
+  });
 });
 
 
 // A GET route for scraping the echoJS website
-router.get("/scrape", function(req, res) {
+router.get("/scrape", (req, res) => {
   // First, we grab the body of the html with axios
   axios.get("http://old.reddit.com/r/LiverpoolFC/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -30,7 +30,6 @@ router.get("/scrape", function(req, res) {
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).children("p").children("a").text();
       result.link = $(this).children("p").children("a").attr("href");
-      result.
 
       // Create a new Article using the `result` object built from scraping
       db.Video.create(result)
@@ -49,6 +48,9 @@ router.get("/scrape", function(req, res) {
   });
 });
 
+router.get("/vidoes/", (req, res) => {
+
+})
 
 // Export routes for server.js to use.
 module.exports = router;
