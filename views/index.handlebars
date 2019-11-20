@@ -1,5 +1,5 @@
 <nav id="navbar">
-  <h3>LiverpoolFC Goals</h3>
+  <h3>LiverpoolFC Videos</h3>
   <h6>A web scraper to video content posted to reddit.com/r/LiverpoolFC</h6>
 
 </nav>
@@ -13,21 +13,12 @@
       </button>
     </div>
 
-
-    <div class="card">
-      <div class="card-body bg-secondary text-white ">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">Some example text. Some example text.</p>
-        <a href="#" class="card-link">Card link</a>
-      </div>
-    </div>
-
-    {{#each goal}}
+    {{#each video}}
     <div class="card">
       <div class="card-body bg-secondary text-white ">
         <h4 class="card-title">{{this.title}}</h4>
-        <p class="card-text">{{this.description}}</p>
-        <a href="#" class="card-link">{{this.link}}</a>
+        <a href="https://www.reddit.com{{this.link}}" class="card-link" target="_blank">{{this.link}}</a>
+        <a href="#" class="comments">Comments</a>
       </div>
     </div>
     {{/each}}
