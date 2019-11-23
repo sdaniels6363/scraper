@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 // A GET route for scraping the /r/LiverpoolFC
 router.get("/scrape", (req, res) => {
   // First, we grab the body of the html with axios
-  axios.get("http://old.reddit.com/r/LiverpoolFC/").then(function (response) {
+  axios.get("http://old.reddit.com/r/LiverpoolFC/new").then(function (response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
