@@ -23,7 +23,7 @@ router.get("/scrape", (req, res) => {
     var $ = cheerio.load(response.data);
 
     // Now, we grab every div with a top-matter class, and do the following:
-    $(".media").each(function(i, element) {
+    $(".video").each(function(i, element) {
       // Save an empty result object
       var result = {};
 
@@ -31,6 +31,13 @@ router.get("/scrape", (req, res) => {
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).parent().children("p").children("a").text();
       result.link = $(this).parent().children("p").children("a").attr("href");
+
+      // append www.reddit.com to links that are just /r/Liverpool...
+      if (result.link.includes("/r/LiverpoolFC")){
+        newLink = `https://www.reddit.com${result.link}`;
+        result.link = newLink;
+      }
+
       // Create a new Article using the `result` object built from scraping
       db.Media.create(result)
         .then(function(media) {
