@@ -4,7 +4,7 @@ var axios = require("axios");
 var exphbs = require("express-handlebars");
 var cheerio = require("cheerio");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // import dbs
 var db = require("./models")
