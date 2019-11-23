@@ -1,6 +1,6 @@
 <nav id="navbar">
-  <h3>LiverpoolFC Videos</h3>
-  <h6>A web scraper to video content posted to reddit.com/r/LiverpoolFC</h6>
+  <h3>LiverpoolFC Media</h3>
+  <h6>A web scraper to retrieve media content posted to reddit.com/r/LiverpoolFC</h6>
 
 </nav>
 
@@ -13,15 +13,53 @@
       </button>
     </div>
 
-    {{#each video}}
+    {{#each media}}
     <div class="card">
       <div class="card-body bg-secondary text-white ">
         <h4 class="card-title">{{this.title}}</h4>
-        <a href="https://www.reddit.com{{this.link}}" class="card-link" target="_blank">{{this.link}}</a>
-        <a href="#" class="comments">Comments</a>
+        <a href="{{this.link}}" class="card-link" target="_blank">{{this.link}}</a>
+        <a href="#" class="comments" data-id="{{this.id}}" data-target="#commentsModal" data-toggle="modal">Comments</a>
       </div>
     </div>
     {{/each}}
+
+    {{!-- modal --}}
+    <div class="modal show fade" id="commentsModal" tabindex="-1" role="dialog" aria-labelledby="commentsModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="commentsModalLabel">Comments</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            {{#each comment}}
+            <div class="card-body bg-secondary text-white ">
+              <h4 class="card-title">{{this.name}}</h4>
+              <p>{{this.comment}}</p>
+            </div>
+            {{/each}}
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <input type="text" class="form-control" placeholder="Username" name="name" id="commenterName">
+              <div class="input-group">
+                <textarea class="form-control" name="comment" id="commenterComment"></textarea>
+              </div>
+            </form>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal" id="submitComment">Submit</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 
