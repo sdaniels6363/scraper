@@ -5,6 +5,7 @@ $(document).ready(() => {
       method: "GET",
       url: "/scrape"
     }).then(response => {
+      $("#postComments").empty();
       console.log("Scraping complete.");
       console.log(response)
       location.reload();
