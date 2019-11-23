@@ -55,23 +55,26 @@ router.get("/scrape", (req, res) => {
   });
 });
 
-router.post("/comments/retrieve", (req, res) => {
+router.get("/comments/:id", (req, res) => {
 
-  let mediaId = req.body.id;
-
-  db.Media.findById(mediaId).populate("comments").then((media) => {
-    res.render("index", { comment: media })
-  })
+  let mediaId = req.params.id;
+  console.log(mediaId);
+  db.Media.findById(mediaId)
+    .populate("comment")
+    .then((media) => {
+      console.log(media)
+      res.json(media)
+    })
 });
 
 
-router.post("/comments/submit", (req, res) => {
+router.post("/comments/:id", (req, res) => {
 
   console.log(req.body)
 
   db.Comment.create(req.body)
     .then((comment) => {
-      return db.Media.findOneAndUpdate({}, { $push: { comments: comment._id } }, {new: true});
+      return db.Media.findOneAndUpdate({_id: req.params.id}, {$push: { comment: comment._id }} , {new: true});
     })
     .then((added)=> res.status(200).send(`Comment added: ${added}`))
     .catch(err => res.status(500).send(err))
