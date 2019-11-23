@@ -7,17 +7,17 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 var MediaSchema = new Schema({
 
-  title:{
+  title: {
     type: String,
     trim: true,
     required: true
   },
-  link:{
+  link: {
     type: String,
     trim: true,
     required: true
   },
-   comment: {
+  comment: {
     type: Schema.Types.ObjectId,
     ref: "Comment"
   }
