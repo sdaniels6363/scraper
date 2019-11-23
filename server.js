@@ -27,7 +27,7 @@ mongoose.connect(MONGODB_URI);
 
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/videoController.js");
+var routes = require("./controllers/mediaController.js");
 
 app.use(routes);
 
