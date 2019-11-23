@@ -14,27 +14,30 @@ $(document).ready(() => {
   $(".comments").on("click",(event)=>{
 
     console.log("Comments requested.")
-    let mediaId = event.currentTarget.dataset.id
+    mediaId = event.currentTarget.dataset.id
+    console.log(mediaId)
+
     $.ajax({
-      method: "POST",
-      url: "/comments/retrieve",
-      data:{
-        id: mediaId
-      }
+      method: "GET",
+      url: `/comments/${mediaId}`
     }).then(response => {
       console.log("Comments delivered.")
+      console.log(response)
     });
   })
 
   $("#submitComment").on("click", (event)=> {
     event.preventDefault()
 
+    console.log(event)
     let name = $("#commenterName").val();
     let comment = $("#commenterComment").val();
 
+    console.log(mediaId)
+
     $.ajax({
       method: "POST",
-      url: "/comments/submit",
+      url: `/comments/${mediaId}`,
       data:{
         name: name,
         comment: comment
@@ -42,7 +45,8 @@ $(document).ready(() => {
     }).then(response => {
       console.log(response)
 
-
+      $("#commenterName").val("")
+      $("#commenterComment").val("")
 
     });
 
