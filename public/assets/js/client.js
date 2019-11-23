@@ -4,7 +4,8 @@ $(document).ready(() => {
       method: "GET",
       url: "/scrape"
     }).then(response => {
-      console.log("Scraping started.");
+      console.log("Scraping complete.");
+      location.reload();
     });
   });
 });
