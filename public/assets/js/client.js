@@ -12,7 +12,10 @@ $(document).ready(() => {
   });
 
   $(".comments").on("click",(event)=>{
-
+    event.preventDefault()
+    
+    $("#postComments").empty();
+    
     console.log("Comments requested.")
     mediaId = event.currentTarget.dataset.id
     console.log(mediaId)
@@ -23,6 +26,19 @@ $(document).ready(() => {
     }).then(response => {
       console.log("Comments delivered.")
       console.log(response)
+
+      response.map(comment => {
+        let html = `
+        <div class="comment-card">
+          <h4 class="card-title">${comment.name}</h4>
+          <p>${comment.comment}</p>
+        </div>
+        `
+        $("#postComments").append(html);
+      })
+
+
+      
     });
   })
 
