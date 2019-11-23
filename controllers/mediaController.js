@@ -9,8 +9,8 @@ var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", (req, res) => {
-  db.Video.find({}).then((data) => {
-    res.render("index", {video: data});
+  db.Media.find({}).then((data) => {
+    res.render("index", {media: data});
   });
 });
 
@@ -21,21 +21,21 @@ router.get("/scrape", (req, res) => {
   axios.get("http://old.reddit.com/r/LiverpoolFC/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
-    
-    // Now, we grab every h2 within an article tag, and do the following:
-    $(".top-matter").each(function(i, element) {
+
+    // Now, we grab every div with a top-matter class, and do the following:
+    $(".media").each(function(i, element) {
       // Save an empty result object
       var result = {};
 
+      // filter on just media links
       // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this).children("p").children("a").text();
-      result.link = $(this).children("p").children("a").attr("href");
-
+      result.title = $(this).parent().children("p").children("a").text();
+      result.link = $(this).parent().children("p").children("a").attr("href");
       // Create a new Article using the `result` object built from scraping
-      db.Video.create(result)
-        .then(function(dbArticle) {
+      db.Media.create(result)
+        .then(function(media) {
           // View the added result in the console
-          console.log(dbArticle);
+          console.log(media)
         })
         .catch(function(err) {
           // If an error occurred, log it
@@ -44,13 +44,10 @@ router.get("/scrape", (req, res) => {
     });
 
     // Send a message to the client
-    res.send("Scrape Complete");
+    res.status(200).send("Scrape Complete");
   });
 });
 
-router.get("/vidoes/", (req, res) => {
-
-})
 
 // Export routes for server.js to use.
 module.exports = router;
