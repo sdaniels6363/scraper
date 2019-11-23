@@ -10,12 +10,14 @@ var MediaSchema = new Schema({
   title: {
     type: String,
     trim: true,
-    required: true
+    required: true,
+    unique: true
   },
   link: {
     type: String,
     trim: true,
-    required: true
+    required: true,
+    unique: true
   },
   comment: [{
     type: Schema.Types.ObjectId,
