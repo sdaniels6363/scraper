@@ -17,10 +17,10 @@ var MediaSchema = new Schema({
     trim: true,
     required: true
   },
-  comment: {
+  comment: [{
     type: Schema.Types.ObjectId,
     ref: "Comment"
-  }
+  }]
 
 });
 
