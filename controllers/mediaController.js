@@ -62,8 +62,8 @@ router.get("/comments/:id", (req, res) => {
   db.Media.findById(mediaId)
     .populate("comment")
     .then((media) => {
-      console.log(media)
-      res.json(media)
+      console.log(media.comment)
+      res.json(media.comment)
     })
 });
 
