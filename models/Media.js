@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-var VideoSchema = new Schema({
+var MediaSchema = new Schema({
 
   title:{
     type: String,
@@ -25,7 +25,7 @@ var VideoSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Video = mongoose.model("Video", VideoSchema);
+var Media = mongoose.model("Media", MediaSchema);
 
-// Export the Video model
-module.exports = Video;
+// Export the Media model
+module.exports = Media;
